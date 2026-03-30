@@ -1,0 +1,400 @@
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f8f8f6;
+  --bg-card: #ffffff;
+  --bg-secondary: #f1f0ec;
+  --border: rgba(0,0,0,0.1);
+  --border-med: rgba(0,0,0,0.18);
+  --text: #1a1a18;
+  --text-secondary: #5a5a56;
+  --text-tertiary: #9a9a94;
+  --blue: #185FA5;
+  --blue-light: #E6F1FB;
+  --green: #0F6E56;
+  --green-light: #E1F5EE;
+  --amber: #854F0B;
+  --amber-light: #FAEEDA;
+  --red: #A32D2D;
+  --red-light: #FCEBEB;
+  --radius: 8px;
+  --radius-lg: 12px;
+}
+
+body {
+  font-family: 'Georgia', serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── App Header ── */
+.app-header {
+  background: var(--text);
+  color: #f8f8f6;
+  padding: 2rem 2.5rem 1.75rem;
+  border-bottom: 3px solid #c8a96e;
+}
+.app-header h1 {
+  font-size: 26px;
+  font-weight: normal;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+.app-subtitle {
+  font-size: 13px;
+  color: rgba(248,248,246,0.6);
+  font-style: italic;
+  font-family: 'Georgia', serif;
+}
+
+/* ── Main Container ── */
+.cw {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+}
+
+/* ── Section Labels ── */
+.slabel {
+  font-size: 10px;
+  font-weight: bold;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  margin: 1.75rem 0 .75rem;
+}
+
+/* ── Grids ── */
+.fg  { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.fg3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+.fg4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 14px; }
+
+/* ── Form Fields ── */
+.fi { display: flex; flex-direction: column; gap: 5px; }
+.fi label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-family: 'Georgia', serif;
+  font-style: italic;
+}
+.hint {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+input[type="number"],
+input[type="text"],
+select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border-med);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  color: var(--text);
+  font-size: 14px;
+  font-family: 'Georgia', serif;
+  outline: none;
+  transition: border-color .15s;
+  -moz-appearance: textfield;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+input:focus, select:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(24,95,165,0.1); }
+
+/* ── Buttons ── */
+button, .tbtn {
+  font-size: 12px;
+  padding: 6px 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-med);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-family: 'Georgia', serif;
+  transition: background .15s, border-color .15s;
+}
+button:hover { background: var(--bg-secondary); }
+.tbtn.active {
+  background: var(--blue-light);
+  color: var(--blue);
+  border-color: rgba(24,95,165,0.3);
+}
+
+/* ── Tax Info Banner ── */
+.tax-info {
+  font-size: 12px;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  border-radius: var(--radius);
+  border-left: 3px solid #c8a96e;
+  padding: 10px 14px;
+  margin-top: 12px;
+  line-height: 1.7;
+}
+.tax-info strong { font-weight: bold; color: var(--text); }
+
+/* ── Divider ── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
+/* ── Account Tabs ── */
+.acct-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border-med);
+  flex-wrap: wrap;
+}
+.acct-tab {
+  font-size: 13px;
+  padding: 8px 16px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-bottom: none;
+  margin-bottom: -1px;
+  color: var(--text-secondary);
+  background: transparent;
+  border-radius: var(--radius) var(--radius) 0 0;
+  white-space: nowrap;
+  font-family: 'Georgia', serif;
+  transition: background .12s;
+}
+.acct-tab:hover { background: var(--bg-secondary); }
+.acct-tab.active {
+  background: var(--bg-card);
+  border-color: var(--border-med);
+  color: var(--text);
+  font-weight: bold;
+}
+.acct-tab.combined { color: var(--blue); }
+.acct-tab.combined.active { color: var(--blue); }
+.acct-tab.exp-tab { color: var(--amber); }
+.acct-tab.exp-tab.active { color: var(--amber); }
+
+/* ── Account Panels ── */
+.acct-panel { display: none; }
+.acct-panel.active { display: block; }
+
+/* ── Account Header ── */
+.acct-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1.25rem;
+  padding-top: 1.25rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+}
+.acct-name-input {
+  font-size: 17px;
+  font-weight: bold;
+  font-family: 'Georgia', serif;
+  color: var(--text);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 2px 4px;
+  width: 220px;
+  outline: none;
+  transition: border-color .15s;
+}
+.acct-name-input:focus { border-bottom-color: var(--blue); }
+.del-acct-btn {
+  font-size: 11px;
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  margin-left: auto;
+  border-radius: var(--radius);
+  font-family: 'Georgia', serif;
+}
+.del-acct-btn:hover { color: var(--red); border-color: var(--red); background: var(--red-light); }
+
+/* ── Metric Cards ── */
+.metrics { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin: 1.5rem 0; }
+.combined-metrics { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin: 1.5rem 0; }
+.mc {
+  background: var(--bg-secondary);
+  border-radius: var(--radius);
+  padding: 1rem;
+  border-left: 3px solid #c8a96e;
+}
+.mc .ml { font-size: 11px; color: var(--text-tertiary); margin-bottom: 4px; font-style: italic; }
+.mc .mv { font-size: 20px; font-weight: bold; color: var(--text); font-family: 'Georgia', serif; }
+.mc .ms { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; }
+
+/* ── Growth Box ── */
+.growth-box {
+  background: var(--bg-secondary);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--border);
+}
+.growth-box-title { font-size: 11px; font-weight: bold; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 12px; }
+
+/* ── Avg Value display ── */
+.avg-val {
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--text);
+  padding: 8px 10px;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border-med);
+  font-family: 'Georgia', serif;
+}
+
+/* ── Savings Phases ── */
+.phase-hint { font-size: 11px; color: var(--text-tertiary); margin-bottom: 8px; font-style: italic; }
+.phases-wrap { display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; }
+.phase-row { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr auto; gap: 8px; align-items: end; }
+.phase-row .fi label { font-size: 11px; }
+.add-btn {
+  font-size: 12px;
+  padding: 6px 14px;
+  border: 1px dashed var(--blue);
+  background: transparent;
+  color: var(--blue);
+  cursor: pointer;
+  border-radius: var(--radius);
+  font-family: 'Georgia', serif;
+  margin-top: 4px;
+}
+.add-btn:hover { background: var(--blue-light); }
+.del-btn {
+  font-size: 16px;
+  color: var(--text-tertiary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+.del-btn:hover { color: var(--red); }
+
+/* ── Roth Note ── */
+.roth-note {
+  font-size: 12px;
+  color: #633806;
+  background: var(--amber-light);
+  border-radius: var(--radius);
+  border-left: 3px solid #EF9F27;
+  padding: 10px 14px;
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+/* ── Cap Notice ── */
+.cap-notice {
+  font-size: 12px;
+  color: var(--amber);
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+/* ── View Toggle Row ── */
+.trow { display: flex; gap: 8px; margin: .75rem 0; flex-wrap: wrap; }
+
+/* ── Legend ── */
+.legend { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
+.legend span { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary); }
+.legend i { display: inline-block; width: 20px; height: 3px; border-radius: 2px; }
+
+/* ── Charts ── */
+.chart-wrap { position: relative; width: 100%; margin: .25rem 0 1.5rem; }
+.chart-title { font-size: 13px; font-weight: bold; color: var(--text-secondary); margin-bottom: 6px; font-family: 'Georgia', serif; }
+
+/* ── Monthly Breakdown Cards ── */
+.mcard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-med);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+}
+.mcard-title { font-size: 13px; font-weight: bold; color: var(--text-secondary); margin-bottom: 14px; font-family: 'Georgia', serif; }
+.mrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+.mrow:last-child { border-bottom: none; }
+.mrow .lbl { font-size: 13px; color: var(--text-secondary); }
+.mrow .lbl.tot { font-weight: bold; color: var(--text); }
+.mrow .val { font-size: 13px; font-weight: bold; color: var(--text); }
+.mrow .pct { font-size: 11px; color: var(--text-tertiary); margin-left: 6px; }
+.mrow.match-row .lbl { color: var(--green); font-size: 12px; padding-left: 18px; font-style: italic; }
+.mrow.match-row .val { color: var(--green); font-size: 12px; }
+.bar-bg { height: 8px; background: var(--bg-secondary); border-radius: 4px; overflow: hidden; margin: 4px 0 10px; }
+
+/* ── Expense Panel ── */
+.exp-section-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-med);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+}
+.exp-section-title { font-size: 13px; font-weight: bold; color: var(--text-secondary); margin-bottom: 12px; font-family: 'Georgia', serif; }
+.exp-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 14px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.exp-row:last-child { border-bottom: none; }
+.exp-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.exp-name { font-size: 13px; color: var(--text); }
+.dinput {
+  display: flex;
+  align-items: center;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-med);
+  border-radius: var(--radius);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.dinput:focus-within { border-color: var(--blue); }
+.dinput span.pre { padding: 0 7px; font-size: 13px; color: var(--text-secondary); flex-shrink: 0; }
+.dinput input {
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 7px 4px;
+  font-size: 13px;
+  color: var(--text);
+  font-family: 'Georgia', serif;
+  -moz-appearance: textfield;
+}
+.dinput input::-webkit-outer-spin-button,
+.dinput input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.dinput span.suf { padding: 0 8px 0 2px; font-size: 11px; color: var(--text-tertiary); flex-shrink: 0; }
+.custom-exp-row { display: grid; grid-template-columns: 1fr auto auto; gap: 10px; align-items: center; margin-bottom: 10px; }
+.exp-del { font-size: 16px; color: var(--text-tertiary); background: none; border: none; cursor: pointer; padding: 0; line-height: 1; }
+.exp-del:hover { color: var(--red); }
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .app-header { padding: 1.5rem 1.25rem; }
+  .cw { padding: 1.25rem 1rem 3rem; }
+  .fg, .fg3, .fg4 { grid-template-columns: 1fr; }
+  .metrics { grid-template-columns: 1fr 1fr; }
+  .combined-metrics { grid-template-columns: 1fr 1fr; }
+  .phase-row { grid-template-columns: 1fr 1fr 1fr; }
+  .exp-row { gap: 8px; }
+  .acct-tab { font-size: 12px; padding: 6px 10px; }
+}
